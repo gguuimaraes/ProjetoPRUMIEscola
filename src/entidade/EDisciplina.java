@@ -1,11 +1,11 @@
-package entidades;
+package entidade;
 
-import util.ANOLETIVO;
+import util.AnoLetivo;
 
 public class EDisciplina {
     private int codigo;
     private String descricao;
-    private ANOLETIVO anoLetivo;
+    private AnoLetivo anoLetivo;
     private int cargaHoraria;
 
     public int getCodigo() {
@@ -24,11 +24,11 @@ public class EDisciplina {
         this.descricao = descricao;
     }
 
-    public ANOLETIVO getAnoLetivo() {
+    public AnoLetivo getAnoLetivo() {
         return anoLetivo;
     }
 
-    public void setAnoLetivo(ANOLETIVO anoLetivo) {
+    public void setAnoLetivo(AnoLetivo anoLetivo) {
         this.anoLetivo = anoLetivo;
     }
 
