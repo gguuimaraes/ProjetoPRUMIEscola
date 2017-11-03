@@ -12,7 +12,7 @@ package apresentacao;
 public class Discente_cadastro extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Dicente_cadastro
+     * Creates new form Discente_cadastro
      */
     public Discente_cadastro() {
         initComponents();
