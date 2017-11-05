@@ -22,5 +22,16 @@ public enum Titulacao {
     
     public String toString() {
         return nome;
-    } 
+    }
+    
+    public static Titulacao valueOf(int id) {
+        switch(id) {
+            case 1: return TECNOLOGO;
+            case 2: return BACHARELADO;
+            case 3: return LICENCIATURA;
+            case 4: return ESPECIALIZACAO;
+            case 5: return MESTRADO;
+            default: return DOUTORADO;
+        }
+    }
 }

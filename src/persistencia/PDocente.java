@@ -1,6 +1,6 @@
 package persistencia;
 
-import entidade.EDiscente;
+import entidade.EDocente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,31 +10,32 @@ import java.util.ArrayList;
 import util.Query;
 import util.Conexao;
 import util.Sexo;
+import util.Titulacao;
 
-public class PDiscente {
+public class PDocente {
 
-    public void incluir(EDiscente parametro) throws SQLException, Exception {
+    public void incluir(EDocente parametro) throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         cnn.setAutoCommit(false);
         try {
             Statement stm = cnn.createStatement();
-            ResultSet rs = stm.executeQuery(Query.SELECT_SEQ_DISCENTE);
+            ResultSet rs = stm.executeQuery(Query.SELECT_SEQ_DOCENTE);
             if (rs.next()) {
                 parametro.setMatricula(rs.getInt("MATRICULA"));
             }
             rs.close();
-            PreparedStatement prd = cnn.prepareStatement(Query.INSERT_DISCENTE);
+            PreparedStatement prd = cnn.prepareStatement(Query.INSERT_DOCENTE);
             prd.setInt(1, parametro.getMatricula());
             prd.setString(2, parametro.getCPF());
             prd.setString(3, parametro.getNome());
-            prd.setString(4, parametro.getNomePai());
-            prd.setString(5, parametro.getNomeMae());
-            prd.setString(6, parametro.getDataNascimento());
-            prd.setString(7, parametro.getTelefone());
-            prd.setString(8, parametro.getCelular());
-            prd.setString(9, parametro.getEmail());
-            prd.setString(10, parametro.getEndereco());
-            prd.setInt(11, parametro.getSexo().getId());
+            prd.setString(4, parametro.getDataNascimento());
+            prd.setString(5, parametro.getTelefone());
+            prd.setString(6, parametro.getCelular());
+            prd.setString(7, parametro.getEmail());
+            prd.setString(8, parametro.getEndereco());
+            prd.setInt(9, parametro.getSexo().getId());
+            prd.setInt(10, parametro.getTitulacao().getId());
+            prd.setInt(11, parametro.getDisciplina().getCodigo());
             prd.execute(); 
             cnn.commit();
         } catch (Exception ex) {
@@ -45,21 +46,21 @@ public class PDiscente {
         }
     }
 
-    public void alterar(EDiscente parametro) throws SQLException, Exception {
+    public void alterar(EDocente parametro) throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         cnn.setAutoCommit(false);
         try {
-            PreparedStatement prd = cnn.prepareStatement(Query.UPDATE_DISCENTE);
+            PreparedStatement prd = cnn.prepareStatement(Query.UPDATE_DOCENTE);
             prd.setString(1, parametro.getCPF());
             prd.setString(2, parametro.getNome());
-            prd.setString(3, parametro.getNomePai());
-            prd.setString(4, parametro.getNomeMae());
-            prd.setString(5, parametro.getDataNascimento());
-            prd.setString(6, parametro.getTelefone());
-            prd.setString(7, parametro.getCelular());
-            prd.setString(8, parametro.getEmail());
-            prd.setString(9, parametro.getEndereco());
-            prd.setInt(10, parametro.getSexo().getId());
+            prd.setString(3, parametro.getDataNascimento());
+            prd.setString(4, parametro.getTelefone());
+            prd.setString(5, parametro.getCelular());
+            prd.setString(6, parametro.getEmail());
+            prd.setString(7, parametro.getEndereco());
+            prd.setInt(8, parametro.getSexo().getId());
+            prd.setInt(9, parametro.getTitulacao().getId());
+            prd.setInt(10, parametro.getDisciplina().getCodigo());
             prd.setInt(11, parametro.getMatricula());
             prd.executeUpdate();
             cnn.commit();
@@ -75,7 +76,7 @@ public class PDiscente {
         Connection cnn = Conexao.getConexao();
         cnn.setAutoCommit(false);
         try {
-            PreparedStatement prd = cnn.prepareStatement(Query.DELETE_DISCENTE);
+            PreparedStatement prd = cnn.prepareStatement(Query.DELETE_DOCENTE);
             prd.setInt(1, matricula);
             prd.execute();
             cnn.commit();
@@ -87,25 +88,25 @@ public class PDiscente {
         }
     }
 
-    public EDiscente consultar(int matricula) throws SQLException, Exception {
+    public EDocente consultar(int matricula) throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
-        PreparedStatement prd = cnn.prepareStatement(Query.SELECT_DISCENTE);
+        PreparedStatement prd = cnn.prepareStatement(Query.SELECT_DOCENTE);
         prd.setInt(1, matricula);
         ResultSet rs = prd.executeQuery();
-        EDiscente objeto = null;
+        EDocente objeto = null;
         if (rs.next()) {
-            objeto = new EDiscente();
+            objeto = new EDocente();
             objeto.setMatricula(rs.getInt("MATRICULA"));
             objeto.setCPF(rs.getString("CPF"));
             objeto.setNome(rs.getString("NOME"));
-            objeto.setNomePai(rs.getString("NOMEPAI"));
-            objeto.setNomeMae(rs.getString("NOMEMAE"));
             objeto.setDataNascimento(rs.getString("DATANASCIMENTO"));
             objeto.setTelefone(rs.getString("TELEFONE"));
             objeto.setCelular(rs.getString("CELULAR"));
             objeto.setEmail(rs.getString("EMAIL"));
             objeto.setEndereco(rs.getString("ENDERECO"));
             objeto.setSexo(Sexo.valueOf(rs.getInt("SEXO")));
+            objeto.setTitulacao(Titulacao.valueOf(rs.getInt("TITULACAO")));
+            objeto.setDisciplina(new PDisciplina().consultar(rs.getInt("COD_DISCIPLINA")));            
         }
         prd.close();
         rs.close();
@@ -113,27 +114,27 @@ public class PDiscente {
         return objeto;
     }
 
-    public ArrayList<EDiscente> listar() throws SQLException, Exception {
+    public ArrayList<EDocente> listar() throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         Statement stm = cnn.createStatement();
-        ResultSet rs = stm.executeQuery(Query.SELECT_ALL_DISCENTE);
-        ArrayList<EDiscente> lista = null;
+        ResultSet rs = stm.executeQuery(Query.SELECT_ALL_DOCENTE);
+        ArrayList<EDocente> lista = null;
         while (rs.next()) {
             if (lista == null) {
                 lista = new ArrayList<>();
             }
-            EDiscente objeto = new EDiscente();
+            EDocente objeto = new EDocente();
             objeto.setMatricula(rs.getInt("MATRICULA"));
             objeto.setCPF(rs.getString("CPF"));
             objeto.setNome(rs.getString("NOME"));
-            objeto.setNomePai(rs.getString("NOMEPAI"));
-            objeto.setNomeMae(rs.getString("NOMEMAE"));
             objeto.setDataNascimento(rs.getString("DATANASCIMENTO"));
             objeto.setTelefone(rs.getString("TELEFONE"));
             objeto.setCelular(rs.getString("CELULAR"));
             objeto.setEmail(rs.getString("EMAIL"));
             objeto.setEndereco(rs.getString("ENDERECO"));
             objeto.setSexo(Sexo.valueOf(rs.getInt("SEXO")));
+            objeto.setTitulacao(Titulacao.valueOf(rs.getInt("TITULACAO")));
+            objeto.setDisciplina(new PDisciplina().consultar(rs.getInt("COD_DISCIPLINA"))); 
             lista.add(objeto);
         }
         stm.close();

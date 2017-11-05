@@ -28,5 +28,22 @@ public enum AnoLetivo {
     
     public String toString() {
         return nome;
-    } 
+    }
+    
+    public static AnoLetivo valueOf(int id) {
+        switch(id) {
+            case 1: return F1;
+            case 2: return F2;
+            case 3: return F3;
+            case 4: return F4;
+            case 5: return F5;
+            case 6: return F6;
+            case 7: return F7;
+            case 8: return F8;
+            case 9: return F9;
+            case 10: return M1;
+            case 11: return M2;
+            default: return M3;
+        }
+    }
 }
