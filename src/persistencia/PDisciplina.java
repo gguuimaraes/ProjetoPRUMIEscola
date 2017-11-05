@@ -35,7 +35,7 @@ public class PDisciplina {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -54,7 +54,7 @@ public class PDisciplina {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -70,7 +70,7 @@ public class PDisciplina {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -89,7 +89,6 @@ public class PDisciplina {
         }
         prd.close();
         rs.close();
-        cnn.close();
         return objeto;
     }
 
@@ -111,7 +110,6 @@ public class PDisciplina {
         }
         stm.close();
         rs.close();
-        cnn.close();
         return lista;
     }
 }

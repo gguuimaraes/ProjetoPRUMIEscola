@@ -26,7 +26,7 @@ public class EDiscente extends EPessoa {
 
     @Override
     public String toString() {
-        return "EPessoa{" 
+        return "EDiscente{" 
                 + "matricula=" + matricula
                 + ", CPF=" + CPF 
                 + ", nome=" + nome 

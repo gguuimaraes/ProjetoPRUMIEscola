@@ -41,7 +41,7 @@ public class PDiscente {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -67,7 +67,7 @@ public class PDiscente {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -83,7 +83,7 @@ public class PDiscente {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -109,7 +109,6 @@ public class PDiscente {
         }
         prd.close();
         rs.close();
-        cnn.close();
         return objeto;
     }
 
@@ -138,7 +137,6 @@ public class PDiscente {
         }
         stm.close();
         rs.close();
-        cnn.close();
         return lista;
     }
 }

@@ -1,7 +1,10 @@
 
-import entidade.EDiscente;
-import persistencia.PDiscente;
+import entidade.EDisciplina;
+import entidade.EDocente;
+import persistencia.PDisciplina;
+import persistencia.PDocente;
 import util.Sexo;
+import util.Titulacao;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,14 +20,9 @@ public class Teste {
 
     public static void main(String[] args) {
         try {
-            EDiscente d = new EDiscente();
-            d.setNome("nome do fi");
-            d.setNomePai("nome do pai");
-            d.setNomeMae("nome da mae");
-            d.setDataNascimento("03/09/1998");
-            d.setSexo(Sexo.MASCULINO);
-            new PDiscente().incluir(d);
-            System.out.println(d.getMatricula());
+            System.out.println(new PDocente().listar().size());
+            new PDocente().excluir(6);
+            System.out.println(new PDocente().listar().size());
         } catch (Exception ex) {
             System.err.print(ex);
         }

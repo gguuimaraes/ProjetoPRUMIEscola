@@ -42,7 +42,7 @@ public class PDocente {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -68,7 +68,7 @@ public class PDocente {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -84,7 +84,7 @@ public class PDocente {
             cnn.rollback();
             throw ex;
         } finally {
-            cnn.close();
+            cnn.setAutoCommit(true);
         }
     }
 
@@ -110,7 +110,6 @@ public class PDocente {
         }
         prd.close();
         rs.close();
-        cnn.close();
         return objeto;
     }
 
@@ -139,7 +138,6 @@ public class PDocente {
         }
         stm.close();
         rs.close();
-        cnn.close();
         return lista;
     }
 }

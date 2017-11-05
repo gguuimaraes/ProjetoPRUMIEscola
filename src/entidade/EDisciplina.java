@@ -39,4 +39,9 @@ public class EDisciplina {
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
+
+    @Override
+    public String toString() {
+        return "EDisciplina{" + "codigo=" + codigo + ", descricao=" + descricao + ", anoLetivo=" + anoLetivo + ", cargaHoraria=" + cargaHoraria + '}';
+    }
 }
