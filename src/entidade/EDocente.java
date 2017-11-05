@@ -2,6 +2,10 @@ package entidade;
 
 import util.Titulacao;
 
+/**
+ *
+ * @author gguui
+ */
 public class EDocente extends EPessoa {
     private Titulacao titulacao;
     private EDisciplina disciplina;

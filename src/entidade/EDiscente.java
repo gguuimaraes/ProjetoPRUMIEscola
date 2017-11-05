@@ -1,5 +1,9 @@
 package entidade;
 
+/**
+ *
+ * @author gguui
+ */
 public class EDiscente extends EPessoa {
     private String nomePai;
     private String nomeMae;
@@ -18,6 +22,23 @@ public class EDiscente extends EPessoa {
 
     public void setNomeMae(String nomeMae) {
         this.nomeMae = nomeMae;
+    }
+
+    @Override
+    public String toString() {
+        return "EPessoa{" 
+                + "matricula=" + matricula
+                + ", CPF=" + CPF 
+                + ", nome=" + nome 
+                + ", dataNascimento=" + dataNascimento 
+                + ", telefone=" + telefone 
+                + ", celular=" + celular 
+                + ", email=" + email 
+                + ", endereco=" + endereco
+                + ", sexo=" + sexo 
+                + ", nomePai=" + nomePai
+                + ", nomeMae=" + nomeMae
+                + '}';
     }
     
     

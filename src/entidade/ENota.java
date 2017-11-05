@@ -1,5 +1,9 @@
 package entidade;
 
+/**
+ *
+ * @author gguui
+ */
 public class ENota {
     private int codigo;
     private float bimestre1;

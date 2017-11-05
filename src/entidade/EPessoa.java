@@ -2,16 +2,20 @@ package entidade;
 
 import util.Sexo;
 
+/**
+ *
+ * @author gguui
+ */
 public abstract class EPessoa {
-    private int matricula;
-    private String CPF;
-    private String nome;
-    private String dataNascimento;
-    private String telefone;
-    private String celular;
-    private String email;
-    private String endereco;
-    private Sexo sexo;
+    int matricula;
+    String CPF;
+    String nome;
+    String dataNascimento;
+    String telefone;
+    String celular;
+    String email;
+    String endereco;
+    Sexo sexo;
 
     public int getMatricula() {
         return matricula;
@@ -84,7 +88,4 @@ public abstract class EPessoa {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
-    
-    
-    
 }

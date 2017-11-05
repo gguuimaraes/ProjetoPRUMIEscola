@@ -18,5 +18,12 @@ public enum Sexo {
     
     public String toString() {
         return nome;
-    } 
+    }
+    
+    public static Sexo valueOf(int id) {
+        switch(id) {
+            case 1: return MASCULINO;
+            default: return FEMININO;
+        }
+    }
 }

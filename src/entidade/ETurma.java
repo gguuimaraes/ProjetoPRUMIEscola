@@ -3,6 +3,10 @@ package entidade;
 import util.AnoLetivo;
 import util.StatusTurma;
 
+/**
+ *
+ * @author gguui
+ */
 public class ETurma {
     private int codigo;
     private AnoLetivo anoLetivo;
