@@ -39,4 +39,17 @@ public class Query {
     public static String DELETE_DISCIPLINA = "DELETE FROM DISCIPLINA WHERE CODIGO = ?";
     public static String SELECT_DISCIPLINA = "SELECT * FROM DISCIPLINA WHERE CODIGO = ?";
     public static String SELECT_ALL_DISCIPLINA = "SELECT * FROM DISCIPLINA ORDER BY CODIGO";
+    
+    //TURMA
+    public static String INSERT_TURMA = "INSERT INTO TURMA "
+            + "(CODIGO, ANOLETIVO, LETRA, ANOATUAL, NUMEROVAGAS, STATUS) VALUES "
+            + "(?, ?, ?, ?, ?, ?)";
+    public static String SELECT_SEQ_TURMA = "SELECT TURMA_CODIGO_SEQ.NEXTVAL AS CODIGO FROM DUAL";
+    public static String UPDATE_TURMA = "UPDATE TURMA SET "
+            + "ANOLETIVO = ?, LETRA = ?, ANOATUAL = ?, "
+            + "NUMEROVAGAS = ?, STATUS = ? "
+            + "WHERE CODIGO = ?";
+    public static String DELETE_TURMA = "DELETE FROM TURMA WHERE CODIGO = ?";
+    public static String SELECT_TURMA = "SELECT * FROM TURMA WHERE CODIGO = ?";
+    public static String SELECT_ALL_TURMA = "SELECT * FROM TURMA ORDER BY CODIGO";
 }

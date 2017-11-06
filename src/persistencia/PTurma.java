@@ -1,6 +1,6 @@
 package persistencia;
 
-import entidade.EDisciplina;
+import entidade.ETurma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,24 +10,27 @@ import java.util.ArrayList;
 import util.AnoLetivo;
 import util.Query;
 import util.Conexao;
+import util.StatusTurma;
 
-public class PDisciplina {
+public class PTurma {
 
-    public void incluir(EDisciplina parametro) throws SQLException, Exception {
+    public void incluir(ETurma parametro) throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         cnn.setAutoCommit(false);
         try {
             Statement stm = cnn.createStatement();
-            ResultSet rs = stm.executeQuery(Query.SELECT_SEQ_DISCIPLINA);
+            ResultSet rs = stm.executeQuery(Query.SELECT_SEQ_TURMA);
             if (rs.next()) {
                 parametro.setCodigo(rs.getInt("CODIGO"));
             }
             rs.close();
-            PreparedStatement prd = cnn.prepareStatement(Query.INSERT_DISCIPLINA);
+            PreparedStatement prd = cnn.prepareStatement(Query.INSERT_TURMA);
             prd.setInt(1, parametro.getCodigo());
-            prd.setString(2, parametro.getDescricao());
-            prd.setInt(3, parametro.getAnoLetivo().getId());
-            prd.setInt(4, parametro.getCargaHoraria());
+            prd.setInt(2, parametro.getAnoLetivo().getId());
+            prd.setInt(3, parametro.getLetra());
+            prd.setString(4, parametro.getAnoAtual());
+            prd.setInt(5, parametro.getNumeroVagas());
+            prd.setInt(6, parametro.getStatus().getId());
             prd.execute();
             cnn.commit();
         } catch (Exception ex) {
@@ -38,15 +41,17 @@ public class PDisciplina {
         }
     }
 
-    public void alterar(EDisciplina parametro) throws SQLException, Exception {
+    public void alterar(ETurma parametro) throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         cnn.setAutoCommit(false);
         try {
-            PreparedStatement prd = cnn.prepareStatement(Query.UPDATE_DISCIPLINA);
-            prd.setString(1, parametro.getDescricao());
-            prd.setInt(2, parametro.getAnoLetivo().getId());
-            prd.setInt(3, parametro.getCargaHoraria());
-            prd.setInt(4, parametro.getCodigo());
+            PreparedStatement prd = cnn.prepareStatement(Query.UPDATE_TURMA);
+            prd.setInt(1, parametro.getAnoLetivo().getId());
+            prd.setInt(2, parametro.getLetra());
+            prd.setString(3, parametro.getAnoAtual());
+            prd.setInt(4, parametro.getNumeroVagas());
+            prd.setInt(5, parametro.getStatus().getId());
+            prd.setInt(6, parametro.getCodigo());
             prd.executeUpdate();
             cnn.commit();
         } catch (Exception ex) {
@@ -61,7 +66,7 @@ public class PDisciplina {
         Connection cnn = Conexao.getConexao();
         cnn.setAutoCommit(false);
         try {
-            PreparedStatement prd = cnn.prepareStatement(Query.DELETE_DISCIPLINA);
+            PreparedStatement prd = cnn.prepareStatement(Query.DELETE_TURMA);
             prd.setInt(1, codigo);
             prd.execute();
             cnn.commit();
@@ -73,38 +78,42 @@ public class PDisciplina {
         }
     }
 
-    public EDisciplina consultar(int codigo) throws SQLException, Exception {
+    public ETurma consultar(int codigo) throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
-        PreparedStatement prd = cnn.prepareStatement(Query.SELECT_DISCIPLINA);
+        PreparedStatement prd = cnn.prepareStatement(Query.SELECT_TURMA);
         prd.setInt(1, codigo);
         ResultSet rs = prd.executeQuery();
-        EDisciplina objeto = null;
+        ETurma objeto = null;
         if (rs.next()) {
-            objeto = new EDisciplina();
+            objeto = new ETurma();
             objeto.setCodigo(rs.getInt("CODIGO"));
-            objeto.setDescricao(rs.getString("DESCRICAO"));
             objeto.setAnoLetivo(AnoLetivo.valueOf(rs.getInt("ANOLETIVO")));
-            objeto.setCargaHoraria(rs.getInt("CARGAHORARIA"));
+            objeto.setLetra(rs.getString("LETRA").charAt(0));
+            objeto.setAnoAtual(rs.getString("ANOATUAL"));
+            objeto.setNumeroVagas(rs.getInt("NUMEROVAGAS"));
+            objeto.setStatus(StatusTurma.valueOf(rs.getInt("STATUS")));
         }
         prd.close();
         rs.close();
         return objeto;
     }
 
-    public ArrayList<EDisciplina> listar() throws SQLException, Exception {
+    public ArrayList<ETurma> listar() throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         Statement stm = cnn.createStatement();
-        ResultSet rs = stm.executeQuery(Query.SELECT_ALL_DISCIPLINA);
-        ArrayList<EDisciplina> lista = null;
+        ResultSet rs = stm.executeQuery(Query.SELECT_ALL_TURMA);
+        ArrayList<ETurma> lista = null;
         while (rs.next()) {
             if (lista == null) {
                 lista = new ArrayList<>();
             }
-            EDisciplina objeto = new EDisciplina();
+            ETurma objeto = new ETurma();
             objeto.setCodigo(rs.getInt("CODIGO"));
-            objeto.setDescricao(rs.getString("DESCRICAO"));
             objeto.setAnoLetivo(AnoLetivo.valueOf(rs.getInt("ANOLETIVO")));
-            objeto.setCargaHoraria(rs.getInt("CARGAHORARIA"));
+            objeto.setLetra(rs.getString("LETRA").charAt(0));
+            objeto.setAnoAtual(rs.getString("ANOATUAL"));
+            objeto.setNumeroVagas(rs.getInt("NUMEROVAGAS"));
+            objeto.setStatus(StatusTurma.valueOf(rs.getInt("STATUS")));
             lista.add(objeto);
         }
         stm.close();

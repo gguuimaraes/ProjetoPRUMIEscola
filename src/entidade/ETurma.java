@@ -1,5 +1,6 @@
 package entidade;
 
+import java.util.ArrayList;
 import util.AnoLetivo;
 import util.StatusTurma;
 
@@ -14,6 +15,8 @@ public class ETurma {
     private String anoAtual;
     private int numeroVagas;
     private StatusTurma status;
+    private ArrayList<EDiscente> discentes;
+    private ArrayList<EDocente> docentes;
 
     public int getCodigo() {
         return codigo;
@@ -62,6 +65,25 @@ public class ETurma {
     public void setStatus(StatusTurma status) {
         this.status = status;
     }
-    
-    
+
+    public ArrayList<EDiscente> getDiscentes() {
+        return discentes;
+    }
+
+    public void setDiscentes(ArrayList<EDiscente> discentes) {
+        this.discentes = discentes;
+    }
+
+    public ArrayList<EDocente> getDocentes() {
+        return docentes;
+    }
+
+    public void setDocentes(ArrayList<EDocente> docentes) {
+        this.docentes = docentes;
+    }
+
+    @Override
+    public String toString() {
+        return "ETurma{" + "codigo=" + codigo + ", anoLetivo=" + anoLetivo + ", letra=" + letra + ", anoAtual=" + anoAtual + ", numeroVagas=" + numeroVagas + ", status=" + status + '}';
+    }
 }

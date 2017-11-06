@@ -19,4 +19,11 @@ public enum StatusDiscente {
     public String toString() {
         return nome;
     } 
+    
+    public static StatusDiscente valueOf(int id) {
+        switch(id) {
+            case 1: return ATIVO;
+            default: return INATIVO;
+        }
+    }
 }

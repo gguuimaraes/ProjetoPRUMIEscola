@@ -95,4 +95,9 @@ public class ENota {
     public void setDiscente(EDiscente discente) {
         this.discente = discente;
     }
+
+    @Override
+    public String toString() {
+        return "ENota{" + "codigo=" + codigo + ", bimestre1=" + bimestre1 + ", bimestre2=" + bimestre2 + ", bimestre3=" + bimestre3 + ", bimestre4=" + bimestre4 + ", recuperacaoParcial=" + recuperacaoParcial + ", recuperacaoFinal=" + recuperacaoFinal + ", turma=" + turma + ", docente=" + docente + ", discente=" + discente + '}';
+    }
 }

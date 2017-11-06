@@ -19,4 +19,11 @@ public enum StatusTurma {
     public String toString() {
         return nome;
     } 
+    
+    public static StatusTurma valueOf(int id) {
+        switch(id) {
+            case 1: return ABERTA;
+            default: return FECHADA;
+        }
+    }
 }
