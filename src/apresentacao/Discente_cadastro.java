@@ -5,6 +5,8 @@
  */
 package apresentacao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Pedro
@@ -64,6 +66,12 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nome");
 
+        jTextFieldSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSexoActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Matricula");
 
         jLabel3.setText("Rg");
@@ -81,8 +89,18 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         jButtonSalvar.setText("Salvar");
 
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         jButtonAlterar.setText("Alterar");
+        jButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
 
@@ -101,6 +119,11 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         jLabel12.setText("Endereço");
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
 
         jButtonConsultar.setText("Consultar");
 
@@ -237,6 +260,34 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
     private void jTextFieldNomeMaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeMaeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeMaeActionPerformed
+
+    private void jTextFieldSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSexoActionPerformed
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        try {
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+        try {
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonAlterarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        try{
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
