@@ -193,7 +193,7 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
             EDisciplina disci = new EDisciplina();
-            disci.setDescricao(jTextFieldDescricao.getText());
+            disci.setDescricao(jTextFieldDescricao.getText().toUpperCase());
             disci.setCargaHoraria(Integer.parseInt(jTextFieldCargaHoraria + ""));
             //disci.setAnoLetivo(jTextFieldAnoLetivo);
             if (!jTextFieldCodigo.getText().isEmpty()) {
@@ -251,6 +251,9 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void LimparTela() {
-        
+        jTextFieldCodigo.setText("");
+        jTextFieldDescricao.setText("");
+        jTextFieldCargaHoraria.setText("");
+        jTextFieldAnoLetivo.setText("");
     }
 }

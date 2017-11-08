@@ -6,6 +6,7 @@
 package apresentacao;
 
 import entidade.EDiscente;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import persistencia.PDiscente;
 import util.Sexo;
@@ -135,6 +136,16 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         });
 
         jButtonConsultar.setText("Consultar");
+
+        DefaultComboBoxModel comboBoxSexoModel = (DefaultComboBoxModel) jComboBoxSexo.getModel();
+        for(Sexo sexo : Sexo.values()){
+            comboBoxSexoModel.addElement(sexo);
+        }
+        jComboBoxSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSexoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,7 +290,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             EDiscente discente = new EDiscente();
             discente.setNome(jTextFieldNome.getText().toUpperCase());
             discente.setCPF(jTextFieldCPF.getText());
-            discente.setSexo(Sexo.FEMININO);
+            discente.setSexo((Sexo)jComboBoxSexo.getSelectedItem());
             discente.setDataNascimento(jTextFieldDtNascimento.getText());
             discente.setTelefone(jTextFieldTelefone.getText());
             discente.setCelular(jTextFieldCelular.getText());
@@ -292,6 +303,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
                 discente.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             }
             JOptionPane.showMessageDialog(null, "O registro foi alterado com sucesso!");
+            LimparTela();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -322,7 +334,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             EDiscente discente = new EDiscente();
             discente.setNome(jTextFieldNome.getText().toUpperCase());
             discente.setCPF(jTextFieldCPF.getText());
-            discente.setSexo(Sexo.MASCULINO);
+            discente.setSexo((Sexo)jComboBoxSexo.getSelectedItem());
             discente.setDataNascimento(jTextFieldDtNascimento.getText());
             discente.setTelefone(jTextFieldTelefone.getText());
             discente.setCelular(jTextFieldCelular.getText());
@@ -337,6 +349,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             PDiscente persistencia = new PDiscente();
             persistencia.incluir(discente);
             JOptionPane.showMessageDialog(null, "O registro foi salvo com sucesso!");
+            LimparTela();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -350,6 +363,10 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jComboBoxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSexoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

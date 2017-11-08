@@ -298,7 +298,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxSexo">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSexoActionPerformed"/>
+      </Events>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="DefaultComboBoxModel comboBoxSexoModel = (DefaultComboBoxModel) jComboBoxSexo.getModel();&#xa;for(Sexo sexo : Sexo.values()){&#xa;comboBoxSexoModel.addElement(sexo);&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
