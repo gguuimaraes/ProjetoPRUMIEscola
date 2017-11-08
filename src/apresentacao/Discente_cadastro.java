@@ -323,7 +323,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             EDiscente discente = new EDiscente();
             discente.setNome(jTextFieldNome.getText().toUpperCase());
             discente.setCPF(jTextFieldCPF.getText());
-            //discente.setSexo((Sexo)jTextFieldSexo.getText());
+            discente.setSexo(Sexo.MASCULINO);
             discente.setDataNascimento(jTextFieldDtNascimento.getText());
             discente.setTelefone(jTextFieldTelefone.getText());
             discente.setCelular(jTextFieldCelular.getText());
@@ -335,9 +335,11 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             if (!jTextFieldMatricula.getText().isEmpty()) {
                 discente.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             }
+            PDiscente persistencia = new PDiscente();
+            persistencia.incluir(discente);
             JOptionPane.showMessageDialog(null, "O registro foi salvo com sucesso!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

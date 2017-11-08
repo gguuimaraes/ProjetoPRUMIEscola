@@ -5,6 +5,7 @@
  */
 package apresentacao;
 
+import entidade.ETurma;
 import javax.swing.JOptionPane;
 
 /**
@@ -272,7 +273,10 @@ public class Turma_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
-
+            ETurma turma = new ETurma();
+            turma.setAnoAtual(jTextFieldAnoAtual.getText());
+            //turma.setAnoLetivo(jTextFieldAnoLetivo.getText());
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

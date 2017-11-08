@@ -172,7 +172,7 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         try {
-
+            dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -187,11 +187,7 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void jTextFieldCargaHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCargaHorariaActionPerformed
-        try {
-            dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
+
     }//GEN-LAST:event_jTextFieldCargaHorariaActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
@@ -200,6 +196,10 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
             disci.setDescricao(jTextFieldDescricao.getText());
             disci.setCargaHoraria(Integer.parseInt(jTextFieldCargaHoraria + ""));
             //disci.setAnoLetivo(jTextFieldAnoLetivo);
+            if(!jTextFieldCodigo.getText().isEmpty()){
+                disci.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+            }
+            JOptionPane.showMessageDialog(null,"O registro foi salvo com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -207,7 +207,10 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         try {
-
+            EDisciplina disci = new EDisciplina();
+            disci.setDescricao(jTextFieldDescricao.getText());
+            disci.setCargaHoraria(Integer.parseInt(jTextFieldCargaHoraria + ""));
+            //disci.setAnoLetivo(jTextFieldAnoLetivo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -215,10 +218,10 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         try {
-            int resposta = JOptionPane.showConfirmDialog(null,"Tem certeza que deseja remover "
-                                                         + "o registro permanentemente do sistema?"
-                                                          ,"Sistema escola",JOptionPane.YES_NO_CANCEL_OPTION);
-            if(resposta == JOptionPane.YES_OPTION){
+            int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover "
+                    + "o registro permanentemente do sistema?",
+                     "Sistema escola", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
                 PDisciplina pd = new PDisciplina();
                 pd.excluir(Integer.parseInt(jTextFieldCodigo.getText()));
                 JOptionPane.showMessageDialog(null, "O registro foi removido com sucesso!");

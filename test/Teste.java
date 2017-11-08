@@ -3,6 +3,7 @@ import entidade.EDisciplina;
 import entidade.EDocente;
 import persistencia.PDisciplina;
 import persistencia.PDocente;
+import util.Conexao;
 import util.Sexo;
 import util.Titulacao;
 
@@ -20,9 +21,7 @@ public class Teste {
 
     public static void main(String[] args) {
         try {
-            System.out.println(new PDocente().listar().size());
-            new PDocente().excluir(6);
-            System.out.println(new PDocente().listar().size());
+            Conexao.getConexao();
         } catch (Exception ex) {
             System.err.print(ex);
         }
