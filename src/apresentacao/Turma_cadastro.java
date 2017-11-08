@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author Pedro
  */
 public class Turma_cadastro extends javax.swing.JInternalFrame {
-
+   
     /**
      * Creates new form Turma_cadastro
      */

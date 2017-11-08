@@ -5,7 +5,9 @@
  */
 package apresentacao;
 
+import entidade.EDisciplina;
 import javax.swing.JOptionPane;
+import persistencia.PDisciplina;
 
 /**
  *
@@ -194,7 +196,10 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
-
+            EDisciplina disci = new EDisciplina();
+            disci.setDescricao(jTextFieldDescricao.getText());
+            disci.setCargaHoraria(Integer.parseInt(jTextFieldCargaHoraria + ""));
+            //disci.setAnoLetivo(jTextFieldAnoLetivo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -210,7 +215,14 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         try {
-
+            int resposta = JOptionPane.showConfirmDialog(null,"Tem certeza que deseja remover "
+                                                         + "o registro permanentemente do sistema?"
+                                                          ,"Sistema escola",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(resposta == JOptionPane.YES_OPTION){
+                PDisciplina pd = new PDisciplina();
+                pd.excluir(Integer.parseInt(jTextFieldCodigo.getText()));
+                JOptionPane.showMessageDialog(null, "O registro foi removido com sucesso!");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

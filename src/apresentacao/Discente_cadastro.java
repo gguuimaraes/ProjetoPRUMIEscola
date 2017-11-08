@@ -7,6 +7,8 @@ package apresentacao;
 
 import entidade.EDiscente;
 import javax.swing.JOptionPane;
+import persistencia.PDiscente;
+import util.Sexo;
 
 /**
  *
@@ -19,6 +21,13 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
      */
     public Discente_cadastro() {
         initComponents();
+
+    }
+
+    private void CarregaCombo() {
+        try {
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -127,8 +136,6 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         });
 
         jButtonConsultar.setText("Consultar");
-
-        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,7 +268,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -269,6 +276,26 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
         try {
+          try {
+            EDiscente discente = new EDiscente();
+            discente.setNome(jTextFieldNome.getText().toUpperCase());
+            discente.setCPF(jTextFieldCPF.getText());
+            //discente.setSexo((Sexo)jTextFieldSexo.getText());
+            discente.setDataNascimento(jTextFieldDtNascimento.getText());
+            discente.setTelefone(jTextFieldTelefone.getText());
+            discente.setCelular(jTextFieldCelular.getText());
+            discente.setNomeMae(jTextFieldNomeMae.getText());
+            discente.setNomePai(jTextFieldNomePai.getText());
+            discente.setEndereco(jTextFieldEndereco.getText());
+            discente.setEmail(jTextFieldEmail.getText());
+
+            if (!jTextFieldMatricula.getText().isEmpty()) {
+                discente.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
+            }
+            JOptionPane.showMessageDialog(null, "O registro foi alterado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -276,9 +303,17 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        try{
-            
-        }catch(Exception e){
+        try {
+            int resposta = JOptionPane.showConfirmDialog(null,"Tem certeza que deseja remover"
+                                                        + " o registro permanentemente do sistema?"
+                                                        ,"Sistema escola",JOptionPane.YES_NO_OPTION);
+            if(resposta == JOptionPane.YES_OPTION){
+                PDiscente discente = new PDiscente();
+                discente.excluir(Integer.parseInt((jTextFieldMatricula.getText())));
+                JOptionPane.showMessageDialog(null,"O registro foi removido com sucesso!");
+                LimparTela();
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
@@ -296,8 +331,8 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             discente.setNomePai(jTextFieldNomePai.getText());
             discente.setEndereco(jTextFieldEndereco.getText());
             discente.setEmail(jTextFieldEmail.getText());
-            
-            if(!jTextFieldMatricula.getText().isEmpty()){
+
+            if (!jTextFieldMatricula.getText().isEmpty()) {
                 discente.setMatricula(Integer.parseInt(jTextFieldMatricula.getText()));
             }
             JOptionPane.showMessageDialog(null, "O registro foi salvo com sucesso!");
@@ -312,7 +347,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        
+
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 
@@ -346,4 +381,19 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldNomePai;
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
+
+    private void LimparTela() {
+        jTextFieldMatricula.setText("");
+        jTextFieldCPF.setText("");
+        jTextFieldNome.setText("");
+        jTextFieldDtNascimento.setText("");
+        jTextFieldCelular.setText("");
+        jTextFieldTelefone.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldEndereco.setText("");
+        jTextFieldNomeMae.setText("");
+        jTextFieldNomePai.setText("");
+        //jComboBoxSexo
+       
+    }
 }
