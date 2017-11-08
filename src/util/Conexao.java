@@ -11,28 +11,27 @@ public class Conexao {
     private Conexao() {
     }
 
-    public static Connection getConexao() {
+    public static Connection getConexao() throws SQLException, Exception {
         try {
             if (conexao == null || conexao.isClosed()) {
                 conexao = conectar();
             }
         } catch (SQLException e) {
-            System.err.print(e.toString());
+            throw e;
         }
         return conexao;
     }
 
-    private static Connection conectar() {
+    private static Connection conectar() throws Exception {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            return DriverManager.getConnection("jdbc:oracle:thin:@" 
-                    + Propriedades.getProp("db.host") 
-                    + ":1521:xe", 
-                    Propriedades.getProp("db.user"), 
+            return DriverManager.getConnection("jdbc:oracle:thin:@"
+                    + Propriedades.getProp("db.host")
+                    + ":1521:xe",
+                    Propriedades.getProp("db.user"),
                     Propriedades.getProp("db.password"));
         } catch (Exception e) {
-            System.err.print(e.toString());
-            return null;
+            throw e;
         }
     }
 }
