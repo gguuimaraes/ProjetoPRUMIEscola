@@ -5,6 +5,7 @@ package entidade;
  * @author gguui
  */
 public class EDiscente extends EPessoa {
+
     private String nomePai;
     private String nomeMae;
 
@@ -26,20 +27,19 @@ public class EDiscente extends EPessoa {
 
     @Override
     public String toString() {
-        return "EDiscente{" 
+        return "EDiscente{"
                 + "matricula=" + matricula
-                + ", CPF=" + CPF 
-                + ", nome=" + nome 
-                + ", dataNascimento=" + dataNascimento 
-                + ", telefone=" + telefone 
-                + ", celular=" + celular 
-                + ", email=" + email 
+                + ", CPF=" + CPF
+                + ", nome=" + nome
+                + ", dataNascimento=" + dataNascimento
+                + ", telefone=" + telefone
+                + ", celular=" + celular
+                + ", email=" + email
                 + ", endereco=" + endereco
-                + ", sexo=" + sexo 
+                + ", sexo=" + sexo
                 + ", nomePai=" + nomePai
                 + ", nomeMae=" + nomeMae
                 + '}';
     }
-    
-    
+
 }

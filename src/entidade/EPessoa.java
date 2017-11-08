@@ -17,6 +17,7 @@ public abstract class EPessoa {
     String endereco;
     Sexo sexo;
 
+
     public int getMatricula() {
         return matricula;
     }
