@@ -29,7 +29,6 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         } catch (Exception e) {
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,7 +279,7 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
             EDiscente discente = new EDiscente();
             discente.setNome(jTextFieldNome.getText().toUpperCase());
             discente.setCPF(jTextFieldCPF.getText());
-            //discente.setSexo((Sexo)jTextFieldSexo.getText());
+            discente.setSexo(Sexo.FEMININO);
             discente.setDataNascimento(jTextFieldDtNascimento.getText());
             discente.setTelefone(jTextFieldTelefone.getText());
             discente.setCelular(jTextFieldCelular.getText());

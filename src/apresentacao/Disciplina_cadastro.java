@@ -196,10 +196,11 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
             disci.setDescricao(jTextFieldDescricao.getText());
             disci.setCargaHoraria(Integer.parseInt(jTextFieldCargaHoraria + ""));
             //disci.setAnoLetivo(jTextFieldAnoLetivo);
-            if(!jTextFieldCodigo.getText().isEmpty()){
+            if (!jTextFieldCodigo.getText().isEmpty()) {
                 disci.setCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
             }
-            JOptionPane.showMessageDialog(null,"O registro foi salvo com sucesso!");
+            JOptionPane.showMessageDialog(null, "O registro foi salvo com sucesso!");
+            LimparTela();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -220,7 +221,7 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
         try {
             int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover "
                     + "o registro permanentemente do sistema?",
-                     "Sistema escola", JOptionPane.YES_NO_CANCEL_OPTION);
+                    "Sistema escola", JOptionPane.YES_NO_CANCEL_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 PDisciplina pd = new PDisciplina();
                 pd.excluir(Integer.parseInt(jTextFieldCodigo.getText()));
@@ -248,4 +249,8 @@ public class Disciplina_cadastro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldDescricao;
     // End of variables declaration//GEN-END:variables
+
+    private void LimparTela() {
+        
+    }
 }
