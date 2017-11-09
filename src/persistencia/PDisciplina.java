@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import util.AnoLetivo;
 import util.Query;
 import util.Conexao;
@@ -91,11 +92,11 @@ public class PDisciplina {
         return objeto;
     }
 
-    public ArrayList<EDisciplina> listar() throws SQLException, Exception {
+    public List<EDisciplina> listar() throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         Statement stm = cnn.createStatement();
         ResultSet rs = stm.executeQuery(Query.SELECT_ALL_DISCIPLINA);
-        ArrayList<EDisciplina> lista = null;
+        List<EDisciplina> lista = null;
         while (rs.next()) {
             if (lista == null) {
                 lista = new ArrayList<>();

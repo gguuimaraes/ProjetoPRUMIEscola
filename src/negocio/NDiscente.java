@@ -7,7 +7,7 @@ package negocio;
 
 import entidade.EDiscente;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 import persistencia.PDiscente;
 
 /**
@@ -15,30 +15,30 @@ import persistencia.PDiscente;
  * @author Pedro
  */
 public class NDiscente {
-     PDiscente discente;
+
+    PDiscente pDiscente;
 
     public NDiscente() {
-        discente = new PDiscente();
+        pDiscente = new PDiscente();
     }
 
     public void salvar(EDiscente dis) throws SQLException, Exception {
         if (dis.getMatricula() == 0) {
-            discente.incluir(dis);
+            pDiscente.incluir(dis);
         } else {
-            discente.alterar(dis);
+            pDiscente.alterar(dis);
         }
     }
 
     public void excluir(int codigo) throws SQLException, Exception {
-        discente.excluir(codigo);
+        pDiscente.excluir(codigo);
     }
 
     public EDiscente consultar(int codigo) throws SQLException, Exception {
-        return discente.consultar(codigo);
+        return pDiscente.consultar(codigo);
     }
 
-    public ArrayList<EDiscente> listar() throws SQLException, Exception {
-        return discente.listar();
+    public List<EDiscente> listar() throws SQLException, Exception {
+        return pDiscente.listar();
     }
 }
-

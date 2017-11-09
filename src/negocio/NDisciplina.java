@@ -7,7 +7,7 @@ package negocio;
 
 import entidade.EDisciplina;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 import persistencia.PDisciplina;
 
 /**
@@ -16,29 +16,29 @@ import persistencia.PDisciplina;
  */
 public class NDisciplina {
 
-    PDisciplina dis;
+    PDisciplina pDisciplina;
 
     public NDisciplina() {
-        dis = new PDisciplina();
+        pDisciplina = new PDisciplina();
     }
 
     public void salvar(EDisciplina parametro) throws SQLException, Exception {
         if (parametro.getCodigo() == 0) {
-            dis.incluir(parametro);
+            pDisciplina.incluir(parametro);
         } else {
-            dis.alterar(parametro);
+            pDisciplina.alterar(parametro);
         }
     }
 
     public void excluir(int codigo) throws SQLException, Exception {
-        dis.excluir(codigo);
+        pDisciplina.excluir(codigo);
     }
 
     public EDisciplina consultar(int codigo) throws SQLException, Exception {
-        return dis.consultar(codigo);
+        return pDisciplina.consultar(codigo);
     }
 
-    public ArrayList<EDisciplina> listar() throws SQLException, Exception {
-        return dis.listar();
+    public List<EDisciplina> listar() throws SQLException, Exception {
+        return pDisciplina.listar();
     }
 }

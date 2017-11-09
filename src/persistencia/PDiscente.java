@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import util.Query;
 import util.Conexao;
 import util.Sexo;
@@ -112,11 +113,11 @@ public class PDiscente {
         return objeto;
     }
 
-    public ArrayList<EDiscente> listar() throws SQLException, Exception {
+    public List<EDiscente> listar() throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         Statement stm = cnn.createStatement();
         ResultSet rs = stm.executeQuery(Query.SELECT_ALL_DISCENTE);
-        ArrayList<EDiscente> lista = null;
+        List<EDiscente> lista = null;
         while (rs.next()) {
             if (lista == null) {
                 lista = new ArrayList<>();

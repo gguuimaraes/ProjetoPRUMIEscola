@@ -7,7 +7,7 @@ package negocio;
 
 import entidade.ETurma;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 import persistencia.PTurma;
 
 /**
@@ -16,29 +16,29 @@ import persistencia.PTurma;
  */
 public class NTurma {
 
-    PTurma turma;
+    PTurma pTurma;
 
     public NTurma() {
-        turma = new PTurma();
+        pTurma = new PTurma();
     }
 
     public void salvar(ETurma tur) throws SQLException, Exception {
         if (tur.getCodigo() == 0) {
-            turma.incluir(tur);
+            pTurma.incluir(tur);
         } else {
-            turma.alterar(tur);
+            pTurma.alterar(tur);
         }
     }
 
     public void excluir(int codigo) throws SQLException, Exception {
-        turma.excluir(codigo);
+        pTurma.excluir(codigo);
     }
 
     public ETurma consultar(int codigo) throws SQLException, Exception {
-        return turma.consultar(codigo);
+        return pTurma.consultar(codigo);
     }
 
-    public ArrayList<ETurma> listar() throws SQLException, Exception {
-        return turma.listar();
+    public List<ETurma> listar() throws SQLException, Exception {
+        return pTurma.listar();
     }
 }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import util.Query;
 import util.Conexao;
 import util.Sexo;
@@ -113,7 +114,7 @@ public class PDocente {
         return objeto;
     }
 
-    public ArrayList<EDocente> listar() throws SQLException, Exception {
+    public List<EDocente> listar() throws SQLException, Exception {
         Connection cnn = Conexao.getConexao();
         Statement stm = cnn.createStatement();
         ResultSet rs = stm.executeQuery(Query.SELECT_ALL_DOCENTE);
