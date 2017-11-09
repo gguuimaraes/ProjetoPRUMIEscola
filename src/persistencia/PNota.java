@@ -101,6 +101,11 @@ public class PNota {
             objeto.setBimestre2(rs.getFloat("BIMESTRE2"));
             objeto.setBimestre3(rs.getFloat("BIMESTRE3"));
             objeto.setBimestre4(rs.getFloat("BIMESTRE4"));
+            objeto.setRecuperacaoParcial(rs.getFloat("RECUPERACAOPARCIAL"));
+            objeto.setRecuperacaoFinal(rs.getFloat("RECUPERACAOFINAL"));
+            objeto.setTurma(new PTurma().consultar(rs.getInt("COD_TURMA")));
+            objeto.setDocente(new PDocente().consultar(rs.getInt("MAT_DOCENTE")));
+            objeto.setDiscente(new PDiscente().consultar(rs.getInt("MAT_DISCENTE")));
             lista.add(objeto);
         }
         stm.close();

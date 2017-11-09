@@ -82,5 +82,4 @@ public class Query {
             + "WHERE CODIGO = ?";
     public static final String DELETE_NOTA = "DELETE FROM NOTA WHERE CODIGO = ?";
     public static final String SELECT_ALL_NOTA_BY_TURMA = "SELECT * FROM NOTA ORDER BY CODIGO WHERE COD_TURMA = ?";
-    public static final String SELECT_ALL_NOTA_BY_DOCENTE = "SELECT * FROM NOTA ORDER BY CODIGO WHERE COD_DOCENTE = ?";
 }
