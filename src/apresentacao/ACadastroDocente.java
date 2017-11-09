@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author Pedro
  */
-public class Docente_cadastro extends javax.swing.JInternalFrame {
+public class ACadastroDocente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Docente_cadastro
      */
-    public Docente_cadastro() {
+    public ACadastroDocente() {
         initComponents();
     }
 

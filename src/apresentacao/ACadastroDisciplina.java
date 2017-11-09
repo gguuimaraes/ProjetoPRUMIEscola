@@ -13,12 +13,12 @@ import persistencia.PDisciplina;
  *
  * @author Pedro
  */
-public class Disciplina_cadastro extends javax.swing.JInternalFrame {
+public class ACadastroDisciplina extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Disciplina_cadastro
      */
-    public Disciplina_cadastro() {
+    public ACadastroDisciplina() {
         initComponents();
     }
 

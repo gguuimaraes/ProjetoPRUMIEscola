@@ -16,24 +16,24 @@ import util.Sexo;
  *
  * @author Pedro
  */
-public class Discente_cadastro extends javax.swing.JInternalFrame {
+public class ACadastroDiscente extends javax.swing.JInternalFrame {
 
     JDesktopPane jDesktopPanePrincipal;
 
     /**
      * Creates new form Discente_cadastro
      */
-    public Discente_cadastro() {
+    private ACadastroDiscente() {
         initComponents();
 
     }
 
-    public Discente_cadastro(JDesktopPane parametro) {
+    public ACadastroDiscente(JDesktopPane parametro) {
         this();
         this.jDesktopPanePrincipal = parametro;
     }
 
-    public Discente_cadastro(JDesktopPane parametro, EDiscente discente) {
+    public ACadastroDiscente(JDesktopPane parametro, EDiscente discente) {
         this(parametro);
 
         preencherTela(discente);
@@ -145,6 +145,11 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         });
 
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         DefaultComboBoxModel comboBoxSexoModel = (DefaultComboBoxModel) jComboBoxSexo.getModel();
         for(Sexo sexo : Sexo.values()){
@@ -287,11 +292,13 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         try {
-            Discente_Pesquisar tela05 = new Discente_Pesquisar(jDesktopPanePrincipal);
-            tela05.add(tela05);
-            tela05.setVisible(true);
+            APesquisaDiscente telaPequisar = new APesquisaDiscente(jDesktopPanePrincipal);
+            jDesktopPanePrincipal.add(telaPequisar);
+            telaPequisar.setVisible(true);
+
+            this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
@@ -379,6 +386,15 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSexoActionPerformed
 
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        try {
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterar;
@@ -422,22 +438,24 @@ public class Discente_cadastro extends javax.swing.JInternalFrame {
         jTextFieldEndereco.setText("");
         jTextFieldNomeMae.setText("");
         jTextFieldNomePai.setText("");
-        //jComboBoxSexo
+        jComboBoxSexo.setSelectedIndex(0);
 
     }
 
     private void preencherTela(EDiscente discente) {
         try {
             jTextFieldMatricula.setText(discente.getMatricula() + "");
-            jTextFieldCPF.setText(discente.getCPF());
-            jTextFieldCelular.setText(discente.getCelular());
-            jTextFieldDtNascimento.setText(discente.getDataNascimento());
-            jTextFieldEmail.setText(discente.getDataNascimento());
-            jTextFieldEndereco.setText(discente.getEndereco());
             jTextFieldNome.setText(discente.getNome());
-            jTextFieldNomeMae.setText(discente.getNomePai());
+            jTextFieldCPF.setText(discente.getCPF());
+            jTextFieldDtNascimento.setText(discente.getDataNascimento());
             jTextFieldTelefone.setText(discente.getTelefone());
+            jTextFieldCelular.setText(discente.getCelular());
             jComboBoxSexo.setSelectedItem(discente.getSexo());
+            jTextFieldNomeMae.setText(discente.getNomeMae());
+            jTextFieldNomeMae.setText(discente.getNomePai());
+            jTextFieldEndereco.setText(discente.getEndereco());
+            jTextFieldEmail.setText(discente.getEmail());
+
             jButtonExcluir.setEnabled(true);
 
         } catch (Exception e) {

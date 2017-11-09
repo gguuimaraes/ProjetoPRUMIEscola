@@ -132,7 +132,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemDicenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDicenteActionPerformed
         try {
-            Discente_cadastro tela01 = new Discente_cadastro();
+            ACadastroDiscente tela01 = new ACadastroDiscente(jDesktopPanePrincipal);
             jDesktopPanePrincipal.add(tela01);
             tela01.setVisible(true);
         } catch (Exception e) {
@@ -149,7 +149,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDocenteActionPerformed
         try {
-            Docente_cadastro tela03 = new Docente_cadastro();
+            ACadastroDocente tela03 = new ACadastroDocente();
             jDesktopPanePrincipal.add(tela03);
             tela03.setVisible(true);
         } catch (Exception e) {

@@ -9,12 +9,12 @@ package apresentacao;
  *
  * @author Pedro
  */
-public class Nota extends javax.swing.JInternalFrame {
+public class ANota extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Nota
      */
-    public Nota() {
+    public ANota() {
         initComponents();
     }
 
