@@ -22,11 +22,11 @@ public class NTurma {
         pTurma = new PTurma();
     }
 
-    public void salvar(ETurma tur) throws SQLException, Exception {
-        if (tur.getCodigo() == 0) {
-            pTurma.incluir(tur);
+    public void salvar(ETurma turma) throws SQLException, Exception {
+        if (turma.getCodigo() == 0) {
+            pTurma.incluir(turma);
         } else {
-            pTurma.alterar(tur);
+            pTurma.alterar(turma);
         }
     }
 
